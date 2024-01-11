@@ -21,6 +21,19 @@ public class NhanVienRepository {
         return listNhanVien;
     }
 
+    public NhanVien getLoginInfo(String maNhanVien, String matKhau) {
+        NhanVien nhanVien = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery("FROM NhanVien WHERE maNhanVien = :maNV AND matKhau = :pwd", NhanVien.class);
+            query.setParameter("maNV", maNhanVien);
+            query.setParameter("pwd", matKhau);
+            nhanVien = (NhanVien) query.getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return nhanVien;
+    }
+    
     
 
 }

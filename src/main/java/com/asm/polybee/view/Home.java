@@ -1,11 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.asm.polybee.view;
 
+import com.asm.polybee.service.Impl.NhanVienServiceImpl;
+import com.asm.polybee.service.NhanVienService;
+import com.asm.polybee.model.NhanVien;
 
 import java.awt.Color;
+import java.util.List;
 
 /**
  *
@@ -13,13 +13,19 @@ import java.awt.Color;
  */
 public class Home extends javax.swing.JFrame {
 
+    NhanVienService nhanVienService = new NhanVienServiceImpl();
+
+    List<NhanVien> listNhanVien = nhanVienService.getAll();
+
     Color DefaultColor, ClickedColor;
 
     /**
      * Creates new form Home
      */
-    public Home() {
+    public Home(NhanVien nhanVien) {
         initComponents();
+        lbl_nhanVienName.setText(nhanVien.getTenNhanVien());
+        
         DefaultColor = new Color(13, 36, 51);
         ClickedColor = new Color(240, 151, 57);
 
@@ -31,6 +37,7 @@ public class Home extends javax.swing.JFrame {
         Menu6.setBackground(DefaultColor);
 
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,11 +63,13 @@ public class Home extends javax.swing.JFrame {
         MenuName = new javax.swing.JLabel();
         SanPham_menu = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        lbl_nhanVienName = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setForeground(new java.awt.Color(0, 0, 255));
 
         Menu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -247,6 +256,10 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        lbl_nhanVienName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_nhanVienName.setForeground(new java.awt.Color(0, 0, 153));
+        lbl_nhanVienName.setText("abc");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -266,13 +279,19 @@ public class Home extends javax.swing.JFrame {
                                 .addComponent(SanPham_menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(lbl_nhanVienName)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(31, 31, 31)
+                .addComponent(lbl_nhanVienName)
+                .addGap(18, 18, 18)
                 .addComponent(MenuName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
+                .addGap(33, 33, 33)
                 .addComponent(Menu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Menu2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -284,7 +303,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(Menu5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Menu6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 153));
@@ -415,7 +434,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Menu4MouseClicked
 
     private void Menu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Menu5MouseClicked
-        NhanVien menu5 = new NhanVien();
+        NhanVienView menu5 = new NhanVienView();
         jDesktopPane1.removeAll();
         jDesktopPane1.add(menu5).setVisible(true);
     }//GEN-LAST:event_Menu5MouseClicked
@@ -433,7 +452,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_SanPham_menuMouseClicked
 
     private void SanPham_menuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SanPham_menuMousePressed
-         Menu1.setBackground(DefaultColor);
+        Menu1.setBackground(DefaultColor);
         Menu2.setBackground(DefaultColor);
         SanPham_menu.setBackground(ClickedColor);
         Menu4.setBackground(DefaultColor);
@@ -446,37 +465,37 @@ public class Home extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Home().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Home().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Menu1;
@@ -495,5 +514,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lbl_nhanVienName;
     // End of variables declaration//GEN-END:variables
 }

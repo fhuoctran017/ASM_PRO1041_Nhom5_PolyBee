@@ -16,6 +16,11 @@ public class NhanVienServiceImpl implements NhanVienService {
         return nhanVienRepository.getAll();
     }
 
+    @Override
+    public NhanVien getLoginInfo(String maNhanVien, String matKhau) {
+        return nhanVienRepository.getLoginInfo(maNhanVien, matKhau);
+    }
+
    
 
 }

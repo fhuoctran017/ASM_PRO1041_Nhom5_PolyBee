@@ -15,5 +15,5 @@ import java.util.List;
 public interface NhanVienService {
     List<NhanVien> getAll();
     
-    
+    NhanVien getLoginInfo(String maNhanVien,String matKhau);
 }

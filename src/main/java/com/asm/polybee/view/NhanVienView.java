@@ -10,12 +10,12 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  *
  * @author phuoc
  */
-public class NhanVien extends javax.swing.JInternalFrame {
+public class NhanVienView extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Menu5
      */
-    public NhanVien() {
+    public NhanVienView() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();

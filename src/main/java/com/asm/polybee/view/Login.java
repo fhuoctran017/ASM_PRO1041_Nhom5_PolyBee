@@ -108,27 +108,26 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_dangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dangNhapActionPerformed
-//        String maNV = txt_maNV.getText();
-//        char[] pwdCharArray = pwd_matKhau.getPassword();
-//        String pwd = new String(pwdCharArray);
-//
-//        ChucVu chucVu = null;
-//        try {
-//            NhanVien nhanVien = nhanVienService.getLoginInfo(maNV, pwd, chucVu);
-//
-//            if (nhanVien != null) {
-//                JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
-//
-//                Home home = new Home();
-//                home.setVisible(true);
-//                this.dispose();
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Đăng nhập thất bại. Vui lòng kiểm tra lại tên người dùng và mật khẩu.");
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace(); // In lỗi ra console
-//            JOptionPane.showMessageDialog(this, "Đã xảy ra lỗi trong quá trình đăng nhập. Vui lòng thử lại sau.");
-//        }
+        String maNV = txt_maNV.getText();
+        char[] pwdCharArray = pwd_matKhau.getPassword();
+        String pwd = new String(pwdCharArray);
+
+        try {
+            NhanVien nhanVien = nhanVienService.getLoginInfo(maNV, pwd);
+
+            if (nhanVien != null) {
+                JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
+
+                Home home = new Home(nhanVien);
+                home.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Đăng nhập thất bại. Vui lòng kiểm tra lại tên người dùng và mật khẩu.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace(); // In lỗi ra console
+            JOptionPane.showMessageDialog(this, "Đã xảy ra lỗi trong quá trình đăng nhập. Vui lòng thử lại sau.");
+        }
     }//GEN-LAST:event_btn_dangNhapActionPerformed
 
     /**
