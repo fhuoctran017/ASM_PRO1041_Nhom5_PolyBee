@@ -10,12 +10,12 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  *
  * @author phuoc
  */
-public class BanHang extends javax.swing.JInternalFrame {
+public class BanHangView extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Menu6
      */
-    public BanHang() {
+    public BanHangView() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();

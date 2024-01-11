@@ -422,7 +422,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Menu6MousePressed
 
     private void Menu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Menu2MouseClicked
-        HoaDon menu2 = new HoaDon();
+        HoaDonView menu2 = new HoaDonView();
         jDesktopPane1.removeAll();
         jDesktopPane1.add(menu2).setVisible(true);
     }//GEN-LAST:event_Menu2MouseClicked
@@ -440,7 +440,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Menu5MouseClicked
 
     private void Menu6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Menu6MouseClicked
-        BanHang menu6 = new BanHang();
+        BanHangView menu6 = new BanHangView();
         jDesktopPane1.removeAll();
         jDesktopPane1.add(menu6).setVisible(true);
     }//GEN-LAST:event_Menu6MouseClicked
