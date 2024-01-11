@@ -3,8 +3,8 @@ package com.asm.polybee.view;
 import com.asm.polybee.model.KhachHang;
 import com.asm.polybee.service.Impl.KhachHangServiceImpl;
 import com.asm.polybee.service.KhachHangService;
-import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,8 +15,10 @@ import javax.swing.table.DefaultTableModel;
 public class KhachHangView extends javax.swing.JInternalFrame {
 
     private KhachHangService khachHangService = new KhachHangServiceImpl();
-    List<KhachHang> listKhachHangs = khachHangService.getAll();
+    List<KhachHang> listKhachHangs;
     DefaultTableModel defaultTableModel;
+    private int currentPage = 2;
+    private int pageSize = 5;
 
     /**
      * Creates new form Menu4
@@ -26,10 +28,18 @@ public class KhachHangView extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
+        listKhachHangs = khachHangService.getKhachHangsByPage((currentPage - 1) * pageSize, pageSize);
         loadDataToTable(listKhachHangs);
     }
 
     void loadDataToTable(List<KhachHang> list) {
+        // Xử lý trường hợp không có dữ liệu
+        if (list.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không có dữ liệu khách hàng nào.");
+            return;
+        }
+
+        // Hiển thị dữ liệu lên bảng
         defaultTableModel = (DefaultTableModel) tbl_khachHang.getModel();
         defaultTableModel.setRowCount(0);
 
@@ -41,9 +51,7 @@ public class KhachHangView extends javax.swing.JInternalFrame {
                 khachHang.getNgaySinh(),
                 khachHang.getSdt(),
                 khachHang.getDiaChi()
-
             });
-
         }
     }
 
@@ -79,6 +87,8 @@ public class KhachHangView extends javax.swing.JInternalFrame {
         jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_khachHang = new javax.swing.JTable();
+        btn_next = new javax.swing.JButton();
+        btn_previous = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Thiết lập thông tin khách hàng"));
 
@@ -228,6 +238,20 @@ public class KhachHangView extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tbl_khachHang);
 
+        btn_next.setText(">");
+        btn_next.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_nextActionPerformed(evt);
+            }
+        });
+
+        btn_previous.setText("<");
+        btn_previous.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_previousActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -235,21 +259,31 @@ public class KhachHangView extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton4)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(91, 91, 91)
+                        .addComponent(btn_previous, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_next, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(126, 126, 126))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4)))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_next)
+                        .addComponent(btn_previous)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -279,8 +313,21 @@ public class KhachHangView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nextActionPerformed
+        currentPage++;
+        loadDataToTable(khachHangService.getKhachHangsByPage((currentPage - 1) * pageSize, pageSize));
+    }//GEN-LAST:event_btn_nextActionPerformed
+
+    private void btn_previousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_previousActionPerformed
+        currentPage--;
+        loadDataToTable(khachHangService.getKhachHangsByPage((currentPage - 1) * pageSize, pageSize));
+
+    }//GEN-LAST:event_btn_previousActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_next;
+    private javax.swing.JButton btn_previous;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
