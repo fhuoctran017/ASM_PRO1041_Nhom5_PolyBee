@@ -1,25 +1,50 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package com.asm.polybee.view;
 
+import com.asm.polybee.model.KhachHang;
+import com.asm.polybee.service.Impl.KhachHangServiceImpl;
+import com.asm.polybee.service.KhachHangService;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author phuoc
  */
-public class KhachHang extends javax.swing.JInternalFrame {
+public class KhachHangView extends javax.swing.JInternalFrame {
+
+    private KhachHangService khachHangService = new KhachHangServiceImpl();
+    List<KhachHang> listKhachHangs = khachHangService.getAll();
+    DefaultTableModel defaultTableModel;
 
     /**
      * Creates new form Menu4
      */
-    public KhachHang() {
+    public KhachHangView() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
+        BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
+        loadDataToTable(listKhachHangs);
+    }
+
+    void loadDataToTable(List<KhachHang> list) {
+        defaultTableModel = (DefaultTableModel) tbl_khachHang.getModel();
+        defaultTableModel.setRowCount(0);
+
+        for (KhachHang khachHang : list) {
+            defaultTableModel.addRow(new Object[]{
+                khachHang.getMaKhachHang(),
+                khachHang.getTenKhachHang(),
+                khachHang.getGioiTinh(),
+                khachHang.getNgaySinh(),
+                khachHang.getSdt(),
+                khachHang.getDiaChi()
+
+            });
+
+        }
     }
 
     /**
@@ -53,7 +78,7 @@ public class KhachHang extends javax.swing.JInternalFrame {
         jTextField6 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_khachHang = new javax.swing.JTable();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Thiết lập thông tin khách hàng"));
 
@@ -190,7 +215,7 @@ public class KhachHang extends javax.swing.JInternalFrame {
 
         jButton4.setText("Tìm kiếm");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_khachHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -201,7 +226,7 @@ public class KhachHang extends javax.swing.JInternalFrame {
                 "Mã khách hàng", "Họ tên", "Giới tính", "Ngày sinh", "Số điện thoại ", "Địa chỉ"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbl_khachHang);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -226,7 +251,7 @@ public class KhachHang extends javax.swing.JInternalFrame {
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -272,12 +297,12 @@ public class KhachHang extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTable tbl_khachHang;
     // End of variables declaration//GEN-END:variables
 }

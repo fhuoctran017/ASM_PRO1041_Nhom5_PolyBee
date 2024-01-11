@@ -428,7 +428,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Menu2MouseClicked
 
     private void Menu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Menu4MouseClicked
-        KhachHang menu4 = new KhachHang();
+        KhachHangView menu4 = new KhachHangView();
         jDesktopPane1.removeAll();
         jDesktopPane1.add(menu4).setVisible(true);
     }//GEN-LAST:event_Menu4MouseClicked
@@ -446,7 +446,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Menu6MouseClicked
 
     private void SanPham_menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SanPham_menuMouseClicked
-        SanPham menu_sp = new SanPham();
+        SanPhamView menu_sp = new SanPhamView();
         jDesktopPane1.removeAll();
         jDesktopPane1.add(menu_sp).setVisible(true);
     }//GEN-LAST:event_SanPham_menuMouseClicked

@@ -10,12 +10,12 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  *
  * @author phuoc
  */
-public class SanPham extends javax.swing.JInternalFrame {
+public class SanPhamView extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Menu3
      */
-    public SanPham() {
+    public SanPhamView() {
         initComponents();this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);

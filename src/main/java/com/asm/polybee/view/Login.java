@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.asm.polybee.view;
 
 import com.asm.polybee.model.ChucVu;
@@ -47,6 +43,15 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setText("Mã Nhân Viên");
 
         jLabel2.setText("Mật khẩu");
+
+        txt_maNV.setText("NV01");
+        txt_maNV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_maNVActionPerformed(evt);
+            }
+        });
+
+        pwd_matKhau.setText("17012003");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 204, 51));
@@ -129,6 +134,10 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Đã xảy ra lỗi trong quá trình đăng nhập. Vui lòng thử lại sau.");
         }
     }//GEN-LAST:event_btn_dangNhapActionPerformed
+
+    private void txt_maNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_maNVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_maNVActionPerformed
 
     /**
      * @param args the command line arguments
