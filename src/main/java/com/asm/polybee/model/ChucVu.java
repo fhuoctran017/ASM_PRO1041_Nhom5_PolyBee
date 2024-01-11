@@ -22,11 +22,16 @@ public class ChucVu {
 
     @Id
     @Column(name = "IdChucVu")
-    String IdChucVu;
+    String idChucVu;
 
     @Column(name = "MaChucVu")
-    String MaChucVu;
+    String maChucVu;
 
     @Column(name = "TenChucVu")
-    String TenChucVu;
+    String tenChucVu;
+    
+    @Override
+    public String toString() {
+        return tenChucVu;
+    }
 }

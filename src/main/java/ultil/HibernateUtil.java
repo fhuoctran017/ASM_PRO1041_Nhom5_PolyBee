@@ -1,6 +1,7 @@
 package ultil;
 
 import com.asm.polybee.model.ChucVu;
+import com.asm.polybee.model.NhanVien;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -10,6 +11,7 @@ import org.hibernate.service.ServiceRegistry;
 import java.util.Properties;
 
 public class HibernateUtil {
+
     private static final SessionFactory FACTORY;
 
     static {
@@ -25,11 +27,12 @@ public class HibernateUtil {
 
         conf.setProperties(properties);
         conf.addAnnotatedClass(ChucVu.class);
+        conf.addAnnotatedClass(NhanVien.class);
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();
         FACTORY = conf.buildSessionFactory(registry);
-        
+
     }
 
     public static SessionFactory getFACTORY() {

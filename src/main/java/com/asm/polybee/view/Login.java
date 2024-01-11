@@ -3,7 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.asm.polybee.view;
+
+import com.asm.polybee.model.ChucVu;
+import com.asm.polybee.model.NhanVien;
+import com.asm.polybee.service.Impl.NhanVienServiceImpl;
+import com.asm.polybee.service.NhanVienService;
 import com.asm.polybee.view.Home;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,9 +18,9 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
+    private NhanVienService nhanVienService = new NhanVienServiceImpl();
+    List<NhanVien> nhanVienList = nhanVienService.getAll();
+
     public Login() {
         initComponents();
     }
@@ -102,19 +108,27 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_dangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dangNhapActionPerformed
-        String maNV = txt_maNV.getText();
-        char[] pwdCharArray = pwd_matKhau.getPassword();
-        String pwd = new String(pwdCharArray);
-
-        if (maNV.equals("admin") && pwd.equals("17012003")) {
-            JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
-            Home home = new Home();
-            home.setVisible(true);
-            this.dispose();
-        } else {
-            // Đăng nhập thất bại
-            JOptionPane.showMessageDialog(this, "Đăng nhập thất bại. Vui lòng kiểm tra lại tên người dùng và mật khẩu.");
-        }
+//        String maNV = txt_maNV.getText();
+//        char[] pwdCharArray = pwd_matKhau.getPassword();
+//        String pwd = new String(pwdCharArray);
+//
+//        ChucVu chucVu = null;
+//        try {
+//            NhanVien nhanVien = nhanVienService.getLoginInfo(maNV, pwd, chucVu);
+//
+//            if (nhanVien != null) {
+//                JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
+//
+//                Home home = new Home();
+//                home.setVisible(true);
+//                this.dispose();
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Đăng nhập thất bại. Vui lòng kiểm tra lại tên người dùng và mật khẩu.");
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace(); // In lỗi ra console
+//            JOptionPane.showMessageDialog(this, "Đã xảy ra lỗi trong quá trình đăng nhập. Vui lòng thử lại sau.");
+//        }
     }//GEN-LAST:event_btn_dangNhapActionPerformed
 
     /**

@@ -20,21 +20,4 @@ public class ChucVuRepository {
         return listChucVu;
     }
     
-    
-    public void printNhanVienAttributes() {
-        List<ChucVu> listChucVu = getAll();
-        if (listChucVu != null) {
-            for (ChucVu chucVu : listChucVu) {
-                System.out.println("IdChucVu: " + chucVu.getIdChucVu());
-                System.out.println("MaChucVu: " + chucVu.getMaChucVu());
-                System.out.println("TenChucVu: " + chucVu.getTenChucVu());
-                System.out.println("--------------------");
-            }
-        }
-    }
-    
-    public static void main(String[] args) {
-        ChucVuRepository chucVuRepository = new ChucVuRepository();
-        chucVuRepository.printNhanVienAttributes();
-    }
 }

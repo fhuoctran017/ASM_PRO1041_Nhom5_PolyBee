@@ -1,13 +1,35 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.asm.polybee.repository;
 
-/**
- *
- * @author phuoc
- */
+import com.asm.polybee.model.ChucVu;
+import com.asm.polybee.model.NhanVien;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Query;
+import org.hibernate.Session;
+import ultil.HibernateUtil;
+
 public class NhanVienRepository {
+
+    public List<NhanVien> getAll() {
+        List<NhanVien> listNhanVien = new ArrayList<>();
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery("FROM NhanVien ", NhanVien.class);
+            listNhanVien = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listNhanVien;
+    }
+
     
+
 }
+
+   
+    
+    
+
+
+    
+
+
