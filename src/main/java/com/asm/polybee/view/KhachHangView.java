@@ -8,10 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author phuoc
- */
+
 public class KhachHangView extends javax.swing.JInternalFrame {
 
     private KhachHangService khachHangService = new KhachHangServiceImpl();
@@ -20,9 +17,7 @@ public class KhachHangView extends javax.swing.JInternalFrame {
     private int currentPage = 2;
     private int pageSize = 5;
 
-    /**
-     * Creates new form Menu4
-     */
+   
     public KhachHangView() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));

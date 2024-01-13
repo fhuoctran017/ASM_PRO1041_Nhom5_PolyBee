@@ -1,13 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.asm.polybee.repository;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-/**
- *
- * @author phuoc
- */
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class ChatLieuRepository {
+    private String idThuongHieu;
     
+    private String tenThuongHieu;
+    
+    private String trangThai;
 }
