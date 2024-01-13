@@ -1,20 +1,49 @@
-
 package com.asm.polybee.view;
 
+import com.asm.polybee.model.NhanVien;
+import com.asm.polybee.service.Impl.NhanVienServiceImpl;
+import com.asm.polybee.service.NhanVienService;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
-
+import javax.swing.table.DefaultTableModel;
 
 public class NhanVienView extends javax.swing.JInternalFrame {
-
-    
+    NhanVienService nvs = new NhanVienServiceImpl();
+    DefaultTableModel defaultTableModel;
+    List<NhanVien> listNhanVien;
     public NhanVienView() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
+        BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
+        listNhanVien = nvs.getAll();
+        loadData(listNhanVien);
     }
 
-    
+    void loadData(List<NhanVien> nhanViens) {
+        if (nhanViens.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không có dữ liệu khách hàng nào.");
+            return;
+        }
+        defaultTableModel = (DefaultTableModel) tblThongTinNhanVien.getModel();
+        defaultTableModel.setRowCount(0);
+
+        for (NhanVien nhanVien : nhanViens) {
+            defaultTableModel.addRow(new Object[]{
+                nhanVien.getMaNhanVien(),
+                nhanVien.getTenNhanVien(),
+                nhanVien.getSdt(),
+                nhanVien.getDiaChi(),
+                nhanVien.getGioiTinh(),
+                nhanVien.getNgaySinh(),
+                nhanVien.getMatKhau(),
+                nhanVien.getIdchucVu(),
+                nhanVien.getTrangThai(),
+            });
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -312,7 +341,7 @@ public class NhanVienView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

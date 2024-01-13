@@ -17,9 +17,10 @@ public class NhanVienRepository {
 
     public List<NhanVien> getAll() {
         List<NhanVien> nhanViens = new ArrayList<>();
-        try ( Connection connection = JDBC.getConnection();  Statement statement = connection.createStatement();  ResultSet resultSet = statement.executeQuery(SQL_GET_ALL)) {
+        try ( Connection connection = JDBC.getConnection();  Statement statement = connection.createStatement();  ResultSet resultSet = statement.executeQuery(SQL_GET_ALL)){
             while (resultSet.next()) {
                 NhanVien nhanVien = mapNhanVien(resultSet);
+                
                 nhanViens.add(nhanVien);
             }
         } catch (SQLException e) {
