@@ -23,4 +23,16 @@ public class KhachHangServiceImpl implements KhachHangService {
         return khachHangRepository.getKhachHangsByPage(offset, limit);
     }
 
+    @Override
+    public boolean themKhachHang(KhachHang khachHang) {
+        if (khachHang != null) {
+            khachHangRepository.themKhachHang(khachHang);
+            return true;
+
+        } else {
+            return false;
+        }
+
+    }
+
 }

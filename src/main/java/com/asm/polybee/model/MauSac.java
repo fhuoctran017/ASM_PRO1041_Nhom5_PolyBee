@@ -12,7 +12,7 @@ import lombok.ToString;
 @Setter
 
 public class MauSac {
-    private Integer idMauSac;
+    private String idMauSac;
     
     private String  tenMauSac;
     

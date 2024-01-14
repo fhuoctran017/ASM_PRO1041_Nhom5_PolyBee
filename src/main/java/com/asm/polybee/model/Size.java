@@ -10,9 +10,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Size {
-    private Integer idSize;
+    private String idSize;
     
-    private int Size;
+    private String Size;
     
     private String trangThai;
 }

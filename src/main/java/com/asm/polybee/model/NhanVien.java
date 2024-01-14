@@ -1,5 +1,6 @@
 package com.asm.polybee.model;
 
+import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,7 +25,7 @@ public class NhanVien {
 
     String diaChi;
 
-    String ngaySinh;
+    Date ngaySinh;
 
     String gioiTinh;
 

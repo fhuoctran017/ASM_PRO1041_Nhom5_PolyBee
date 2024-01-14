@@ -1,13 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.asm.polybee.model;
 
-/**
- *
- * @author phuoc
- */
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class SanPham {
-    
+
+    private String idSanPham;
+    private String maSanPham;
+    private String tenSanPham;
+    private String idTheLoai;
+    private String idThuongHieu;
+    private String trangThai;
 }

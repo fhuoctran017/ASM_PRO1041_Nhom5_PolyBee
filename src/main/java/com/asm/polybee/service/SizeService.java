@@ -4,17 +4,15 @@
  */
 package com.asm.polybee.service;
 
-import com.asm.polybee.model.KhachHang;
+import com.asm.polybee.model.Size;
 import java.util.List;
 
 /**
  *
  * @author phuoc
  */
-public interface KhachHangService {
-    List<KhachHang> getAllKhachHangs();
+public interface SizeService {
+    List<Size> getAll();
     
-    List<KhachHang> getKhachHangsByPage(int offset, int limit);
-    
-    boolean themKhachHang(KhachHang khachHang);
+    Boolean themSize(Size size);
 }

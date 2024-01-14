@@ -5,15 +5,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 public class ThuongHieu {
-    private int idThuongHieu;
-    
+
+    private String idThuongHieu;
+
     private String tenThuongHieu;
-    
+
     private String trangThai;
+
+    @Override
+    public String toString() {
+        return tenThuongHieu; // Chọn một thuộc tính thích hợp để hiển thị làm chuỗi
+    }
 }

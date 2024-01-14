@@ -21,6 +21,16 @@ public class NhanVienServiceImpl implements NhanVienService {
         return nhanVienRepository.getLoginInfo(maNhanVien, matKhau);
     }
 
+    @Override
+    public boolean themNhanVien(NhanVien nhanVien) {
+        if(nhanVien != null){
+            nhanVienRepository.themNhanVien(nhanVien);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
    
 
 }

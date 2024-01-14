@@ -24,8 +24,5 @@ public class ChucVu {
    
     String tenChucVu;
     
-    @Override
-    public String toString() {
-        return tenChucVu;
-    }
+    
 }

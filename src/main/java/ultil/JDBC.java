@@ -14,7 +14,7 @@ public class JDBC {
     public static final String PORT = "1433";
     public static final String DBNAME = "ASM_PRO1041_PolyBee";
     public static final String USERNAME = "sa";
-    public static final String PASSWORD = "123";
+    public static final String PASSWORD = "123456";
 
     /**
      * Get connection to MSSQL Server

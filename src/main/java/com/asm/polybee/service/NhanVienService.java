@@ -16,4 +16,6 @@ public interface NhanVienService {
     List<NhanVien> getAll();
     
     NhanVien getLoginInfo(String maNhanVien,String matKhau);
+    
+    boolean themNhanVien(NhanVien nhanVien);
 }

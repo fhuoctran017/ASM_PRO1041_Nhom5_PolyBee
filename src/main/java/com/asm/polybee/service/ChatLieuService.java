@@ -4,17 +4,16 @@
  */
 package com.asm.polybee.service;
 
-import com.asm.polybee.model.KhachHang;
+import com.asm.polybee.model.ChatLieu;
 import java.util.List;
 
 /**
  *
  * @author phuoc
  */
-public interface KhachHangService {
-    List<KhachHang> getAllKhachHangs();
-    
-    List<KhachHang> getKhachHangsByPage(int offset, int limit);
-    
-    boolean themKhachHang(KhachHang khachHang);
+public interface ChatLieuService {
+
+    List<ChatLieu> getAll();
+
+    boolean themChatLieu(ChatLieu chatLieu);
 }

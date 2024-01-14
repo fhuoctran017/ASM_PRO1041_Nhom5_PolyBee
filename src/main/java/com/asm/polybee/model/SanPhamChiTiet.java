@@ -4,10 +4,30 @@
  */
 package com.asm.polybee.model;
 
-/**
- *
- * @author phuoc
- */
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class SanPhamChiTiet {
+    String idSanPhamChiTiet;
+    
+    String idSanPham;
+    
+    String idChatLieu;
+    
+    String idMauSac;
+    
+    String idSize;
+    
+    Long gia;
+    
+    Integer soLuong;
+    
+    String trangThai;
     
 }

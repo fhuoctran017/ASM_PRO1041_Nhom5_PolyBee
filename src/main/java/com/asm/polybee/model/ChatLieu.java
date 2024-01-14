@@ -14,7 +14,7 @@ import lombok.ToString;
 @ToString
 public class ChatLieu {
     
-    private Integer idChatLieu;
+    private String idChatLieu;
     
     private String tenChatLieu;
     
