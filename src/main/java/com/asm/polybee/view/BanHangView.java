@@ -4,7 +4,10 @@ import com.asm.polybee.model.HoaDon;
 import com.asm.polybee.service.HoaDonService;
 import com.asm.polybee.service.Impl.HoaDonServiceImpl;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -24,6 +27,28 @@ public class BanHangView extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
+    }
+
+    private String taoMaHoaDon() {
+        // Định dạng cho phần số ngẫu nhiên
+        String format = "00000";
+
+        // Lấy ngày và giờ hiện tại
+        LocalDateTime now = LocalDateTime.now();
+
+        // Định dạng cho phần thời gian
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+
+        // Tạo phần thời gian từ ngày và giờ hiện tại
+        String part1 = now.format(formatter);
+
+        // Tạo phần số ngẫu nhiên
+        String part2 = String.format("%05d", new Random().nextInt(100000));
+
+        // Ghép các phần lại với nhau để tạo mã hóa đơn
+        String maHoaDon = "HD" + part1 + part2;
+
+        return maHoaDon;
     }
 
     /**
@@ -153,13 +178,13 @@ public class BanHangView extends javax.swing.JInternalFrame {
     private void btn_thanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_thanhToanActionPerformed
 
         LocalDate ngayTaoLocalDate = LocalDate.now();
-
-        // Chuyển đổi thành kiểu Date
+        String maHoaDon = taoMaHoaDon();
         Date ngayTaoDate = java.sql.Date.valueOf(ngayTaoLocalDate);
 
-        // Tạo đối tượng HoaDon và thiết lập ngày tạo
+        
         HoaDon hoaDon = new HoaDon();
         hoaDon.setNgayTao(ngayTaoDate);
+        hoaDon.setMaHoaDon(maHoaDon);
 
         boolean themThanhCong = hoaDonService.themHoaDon(hoaDon);
         if (themThanhCong) {
