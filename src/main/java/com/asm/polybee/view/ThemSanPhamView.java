@@ -25,8 +25,6 @@ public class ThemSanPhamView extends javax.swing.JFrame {
     List<TheLoai> listTheLoais = theLoaiService.getAll();
     List<ThuongHieu> listThuongHieus = thuongHieuService.getAll();
 
-    
-    
     public ThemSanPhamView() {
         initComponents();
 

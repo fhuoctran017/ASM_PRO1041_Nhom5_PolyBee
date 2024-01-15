@@ -1,25 +1,43 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package com.asm.polybee.view;
 
+import com.asm.polybee.model.HoaDon;
+import com.asm.polybee.service.HoaDonService;
+import com.asm.polybee.service.Impl.HoaDonServiceImpl;
+import java.util.List;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author phuoc
- */
 public class HoaDonView extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form Menu2
-     */
+    private HoaDonService hoaDonService = new HoaDonServiceImpl();
+    List<HoaDon> listHoaDons = hoaDonService.getAllHoaDon();
+    DefaultTableModel defaultTableModel;
+
     public HoaDonView() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
+        BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
+        loadDataSanPhamChiTiet(listHoaDons);
+    }
+    
+        void loadDataSanPhamChiTiet(List<HoaDon> hoaDons) {
+
+        defaultTableModel = (DefaultTableModel) tbl_hoaDon.getModel();
+        defaultTableModel.setRowCount(0);
+
+        for (HoaDon hoaDon : hoaDons) {
+
+            defaultTableModel.addRow(new Object[]{
+                hoaDon.getMaHoaDon(),
+                hoaDon.getIdKhachHang(),
+                hoaDon.getNgayTao(),
+                hoaDon.getGhiChu(),
+                hoaDon.getTrangThai()
+            });
+
+        }
+    
     }
 
     /**
@@ -41,7 +59,7 @@ public class HoaDonView extends javax.swing.JInternalFrame {
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tbl_hoaDon = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -109,7 +127,7 @@ public class HoaDonView extends javax.swing.JInternalFrame {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Hoá đơn"));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_hoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -117,10 +135,10 @@ public class HoaDonView extends javax.swing.JInternalFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Mã hoá đơn", "Khách hàng", "Thành tiền", "Ngày ", "Trạng thái"
+                "Mã hoá đơn", "Khách hàng", "Ngày ", "Ghi chú", "Trạng thái"
             }
         ));
-        jScrollPane3.setViewportView(jTable2);
+        jScrollPane3.setViewportView(tbl_hoaDon);
 
         jScrollPane2.setViewportView(jScrollPane3);
 
@@ -154,7 +172,7 @@ public class HoaDonView extends javax.swing.JInternalFrame {
                         .addGap(40, 40, 40)
                         .addComponent(jButton1)))
                 .addGap(43, 43, 43)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -244,7 +262,7 @@ public class HoaDonView extends javax.swing.JInternalFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 705, Short.MAX_VALUE)
+            .addGap(0, 661, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,6 +307,6 @@ public class HoaDonView extends javax.swing.JInternalFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tbl_hoaDon;
     // End of variables declaration//GEN-END:variables
 }
